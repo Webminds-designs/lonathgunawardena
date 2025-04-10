@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+@theme {
+    --font-rapidresponse: 'RapidResponse', sans-serif;
+    --font-reviewcondensed: 'ReviewCondensed', sans-serif;
+    --font-reviewregular: 'ReviewRegular', sans-serif;
+    --font-reviewheavy: 'ReviewHeavy', sans-serif;
+}
+
+@font-face {
+    font-family: 'RapidResponse';
+    src: url('./font/rapidresponse.ttf');
+}
+
+@font-face {
+    font-family: 'ReviewCondensed';
+    src: url('./font/ReviewCondensed-Regular-Trial.otf');
+}
+
+@font-face {
+    font-family: 'ReviewRegular';
+    src: url('./font/Review-Regular-Trial.otf');
+}
+
+@font-face {
+    font-family: 'ReviewHeavy';
+    src: url('./font/Review-Heavy-Trial.otf');
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
