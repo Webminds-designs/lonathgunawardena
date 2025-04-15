@@ -29,7 +29,7 @@ export default function Hero() {
             </div>
 
             {/* human centric design */}
-            <div className='flex flex-col lg:flex-row justify-between w-full gap-8 mt-5'>
+            <div className='relative flex flex-col lg:flex-row justify-between w-full gap-8 mt-5'>
                 <div className='flex flex-col items-center lg:items-start max-w-lg mx-auto lg:mx-0'>
                     <p className='flex flex-col font-reviewheavy text-xl md:text-2xl lg:text-3xl items-center lg:items-start text-center lg:text-left mb-3'>
                         <span>HUMAN CENTRIC</span>
@@ -77,10 +77,10 @@ export default function Hero() {
                         className='rounded-lg md:rounded-xl absolute top-2/10 shadow-2xl'
                     />
                 </div>
-            </div>
 
-            {/* divider */}
-            <div className="w-full h-px bg-gray-300 my-8"></div>
+                {/* divider */}
+                <div className="absolute bottom-12 w-full h-px bg-gray-300"></div>
+            </div>
 
             {/* selfie */}
             <div className='relative w-full bg-black rounded-lg md:rounded-xl overflow-hidden'>
