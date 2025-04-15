@@ -1,4 +1,5 @@
 import React from 'react'
+import Creative_depth from './creative_depth'
 import sail from '/images/sail.png'
 import bird from '/images/bird.png'
 import flowers from '/images/flowers.png'
@@ -70,7 +71,8 @@ export default function pixels() {
         {/* divider */}
         <div className="w-full h-px bg-neutral-800" />
 
-        {/* creative */}
+        {/* creative depth */}
+        <Creative_depth />
 
         {/* paragraph */}
         <p className='text-sm text-center text-white md:mx-28 lg:mx-32'>Design is more than decoration — it’s a system of clarity, emotion, and intention. My work doesn’t just look good — it works, communicates, and connects across every layer of the experience.</p>
