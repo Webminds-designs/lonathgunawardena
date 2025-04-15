@@ -7,7 +7,7 @@ export default function Hero() {
         <div className='flex flex-col space-y-5 px-12 w-full max-w-[1920px] mx-auto pb-10 md:pb-14 lg:pb-20 xl:pb-24 2xl:pb-32'>
             {/* title */}
             <div className='flex flex-col items-center font-rapidresponse'>
-                <div className='flex text-[60px] md:text-[140px] lg:text-[180px] xl:text-[220px] 2xl:text-[260px] tracking-[-0.05em] leading-[0.8]'>
+                <div className='flex text-[60px] md:text-[140px] lg:text-[180px] xl:text-[220px] 2xl:text-[260px] tracking-[-0.05em] 2xl:leading-[0.9] leading-[0.8]'>
                     <div>L</div>
                     <div>O</div>
                     <div>N</div>
