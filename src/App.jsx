@@ -1,10 +1,16 @@
 import React from 'react'
 import Hero from './components/hero.jsx'
+import Pixels from './components/pixels.jsx'
 
 export default function App() {
   return (
     <div className='flex flex-col items-center'>
-      <Hero />
+      <div className='bg-stone-300 w-full'>
+        <Hero />
+      </div>
+      <div className='bg-black w-full'>
+        <Pixels />
+      </div>
     </div>
   )
 }
