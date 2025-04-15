@@ -1,5 +1,6 @@
 import React from 'react'
 import beyondearth from '/images/beyond_earth.png'
+import selfie from '/images/selfie.png'
 
 export default function Hero() {
     return (
@@ -75,6 +76,28 @@ export default function Hero() {
                         }} 
                         className='rounded-lg md:rounded-xl absolute top-2/10 shadow-2xl'
                     />
+                </div>
+            </div>
+
+            {/* divider */}
+            <div className="w-full h-px bg-gray-300 my-8"></div>
+
+            {/* selfie */}
+            <div className='relative w-full bg-black rounded-lg md:rounded-xl overflow-hidden'>
+                <div
+                    className='w-full h-[200px] md:h-[500px] rounded-lg md:rounded-xl shadow-2xl opacity-40'
+                    style={{
+                        backgroundImage: `url(${selfie})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                >
+                </div>
+                <div className='absolute inset-0 flex flex-col items-center justify-center'>
+                    <h2 className='text-center font-reviewheavy text-5xl md:text-7xl lg:text-9xl text-white leading-tight'>
+                        <span className='block'>MEET</span>
+                        <span className='block'>LONATH</span>
+                    </h2>
                 </div>
             </div>
 
