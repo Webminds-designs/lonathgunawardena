@@ -29,7 +29,7 @@ export default function pixels() {
                     className='w-full h-[150px] md:h-[200px] lg:h-[225px] xl:h-[275px] 2xl:h-[325px] rounded-t-2xl overflow-hidden'
                 />
                 <p className='font-reviewheavy text-lg lg:text-2xl text-white mx-5'>SKETCHES TO SIGNATURE BRANDS</p>
-                <p className='text-sm text-white mx-5'>Every logo starts with a line. Here’s how I shape abstract ideas into distinct, memorable brand identities.</p>
+                <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5'>Every logo starts with a line. Here’s how I shape abstract ideas into distinct, memorable brand identities.</p>
             </div>
             
             <div className='w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
@@ -42,8 +42,8 @@ export default function pixels() {
                     className='w-full h-[150px] md:h-[200px] lg:h-[225px] xl:h-[275px] 2xl:h-[325px] rounded-t-2xl overflow-hidden'
                 />
                 <p className='font-reviewheavy text-lg lg:text-2xl text-white mx-5'>FROM WIREFRAME TO WOW</p>
-                <p className='text-sm text-white mx-5' >See how thoughtful interactions and visual polish transform raw ideas into intuitive, high-impact interfaces.</p>
-                <div className='bg-white font-thin text-sm ml-5 px-8 py-1 rounded-md w-fit'>Check More Projects</div>
+                <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5' >See how thoughtful interactions and visual polish transform raw ideas into intuitive, high-impact interfaces.</p>
+                <div className='bg-white font-thin text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit'>Check More Projects</div>
             </div>
         </div>
 
@@ -56,7 +56,7 @@ export default function pixels() {
         </div>
 
         {/* paragraph */}
-        <p className='text-sm text-center text-white md:mx-28 lg:mx-32'>don’t just design screens — I shape how people feel, move, and connect.Every element is carefully considered, from structure to color to motion. With a process rooted in empathy and intention, I deliver designs that are not only visually striking but also seamlessly functional.Whether it's a digital product or a visual identity, I focus on precision, clarity, and emotion — helping brands tell their story with purpose and users interact with ease.</p>
+        <p className='text-xs xl:text-base 2xl:text-2xl text-center text-white md:mx-28 lg:mx-32'>don’t just design screens — I shape how people feel, move, and connect.Every element is carefully considered, from structure to color to motion. With a process rooted in empathy and intention, I deliver designs that are not only visually striking but also seamlessly functional.Whether it's a digital product or a visual identity, I focus on precision, clarity, and emotion — helping brands tell their story with purpose and users interact with ease.</p>
 
         {/* art and culture */}
         <div 
@@ -75,7 +75,7 @@ export default function pixels() {
         <Creative_depth />
 
         {/* paragraph */}
-        <p className='text-sm text-center text-white md:mx-28 lg:mx-32'>Design is more than decoration — it’s a system of clarity, emotion, and intention. My work doesn’t just look good — it works, communicates, and connects across every layer of the experience.</p>
+        <p className='text-xs xl:text-base 2xl:text-2xl text-center text-white md:mx-28 lg:mx-32'>Design is more than decoration — it’s a system of clarity, emotion, and intention. My work doesn’t just look good — it works, communicates, and connects across every layer of the experience.</p>
 
         {/* divider */}
         <div className="w-full h-px bg-neutral-800" />

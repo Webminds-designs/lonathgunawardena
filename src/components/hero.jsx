@@ -35,7 +35,7 @@ export default function Hero() {
                         <span>HUMAN CENTRIC</span>
                         <span>DESIGN</span>
                     </p>
-                    <p className='text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-center lg:text-left mb-5 xl:mb-8 2xl:mb-12 px-4 lg:px-0'>
+                    <p className='text-xs xl:text-base 2xl:text-2xl font-figtree text-center lg:text-left mb-5 xl:mb-8 2xl:mb-12 px-4 lg:px-0'>
                         I'm Lonath Gunawardena — a UI/UX designer and visual creative focused on building intuitive, elegant digital products and memorable brand identities.
                         From mobile apps to Websites and logos, I merge strategy with creativity to help ideas take shape and come alive.
                     </p>
