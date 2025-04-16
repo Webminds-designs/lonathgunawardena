@@ -3,6 +3,7 @@ import Hero from './components/hero.jsx'
 import Pixels from './components/pixels.jsx'
 import Precision from './components/precision.jsx'
 import Designs from './components/designs.jsx'
+import Carousel from './components/carousel.jsx'
 
 export default function App() {
   return (
@@ -18,6 +19,9 @@ export default function App() {
       </div>
       <div className='bg-stone-300 w-full'>
         <Designs />
+      </div>
+      <div className='bg-black w-full'>
+        <Carousel />
       </div>
     </div>
   )
