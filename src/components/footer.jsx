@@ -53,6 +53,17 @@ export default function Footer() {
                     <div className='font-reviewregular text-sm xl:text-base 2xl:text-2xl bg-black text-white text-right px-10 py-5 rounded-xl'>LET'S CREATE TOGETHER</div>
                 </div>
             </div>
+
+            {/* divider */}
+            <div className="w-full h-px bg-stone-400 mt-20"></div>
+
+            {/* bottom row */}
+            <div className='flex flex-col lg:flex-row justify-between gap-10 font-reviewheavy text-sm md:text-md xl:text-xl 2xl:text-3xl text-center lg:text-left mt-5 lg:mt-10'>
+                <p>CREATIVE DESIGN & DIGITAL EXPERIENCES.</p>
+                <p>UI/UX · BRANDING · GRAPHIC DESIGN</p>
+                <p>lk.gcm29@gmail.com</p>
+            </div>
+            
         </div>
     )
 }
