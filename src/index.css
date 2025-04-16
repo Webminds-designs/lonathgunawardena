@@ -1,10 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
 @theme {
     --font-rapidresponse: 'RapidResponse', sans-serif;
     --font-reviewcondensed: 'ReviewCondensed', sans-serif;
     --font-reviewregular: 'ReviewRegular', sans-serif;
     --font-reviewheavy: 'ReviewHeavy', sans-serif;
+    --font-figtree: 'Figtree', sans-serif;
 }
 
 @font-face {

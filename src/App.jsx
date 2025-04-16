@@ -1,6 +1,7 @@
 import React from 'react'
 import Hero from './components/hero.jsx'
 import Pixels from './components/pixels.jsx'
+import Precision from './components/precision.jsx'
 
 export default function App() {
   return (
@@ -10,6 +11,9 @@ export default function App() {
       </div>
       <div className='bg-black w-full'>
         <Pixels />
+      </div>
+      <div className='bg-black w-full'>
+        <Precision />
       </div>
     </div>
   )
