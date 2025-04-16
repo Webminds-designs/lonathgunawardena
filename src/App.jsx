@@ -5,6 +5,7 @@ import Precision from './components/precision.jsx'
 import Designs from './components/designs.jsx'
 import Carousel from './components/carousel.jsx'
 import Bgimage from './components/bgimage.jsx'
+import Footer from './components/footer.jsx'
 
 export default function App() {
   return (
@@ -26,6 +27,9 @@ export default function App() {
       </div>
       <div style={{ backgroundImage: `url(/images/background.png)` }} className='bg-cover bg-center w-full h-screen'>
         <Bgimage />
+      </div>
+      <div className='bg-stone-300 w-full'>
+        <Footer />
       </div>
     </div>
   )
