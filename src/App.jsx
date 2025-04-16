@@ -4,6 +4,7 @@ import Pixels from './components/pixels.jsx'
 import Precision from './components/precision.jsx'
 import Designs from './components/designs.jsx'
 import Carousel from './components/carousel.jsx'
+import Bgimage from './components/bgimage.jsx'
 
 export default function App() {
   return (
@@ -22,6 +23,9 @@ export default function App() {
       </div>
       <div className='bg-black w-full'>
         <Carousel />
+      </div>
+      <div style={{ backgroundImage: `url(/images/background.png)` }} className='bg-cover bg-center w-full h-screen'>
+        <Bgimage />
       </div>
     </div>
   )
