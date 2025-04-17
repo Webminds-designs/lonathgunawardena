@@ -65,7 +65,7 @@ export default function Hero() {
     const selfieScale = useTransform(
         selfieScrollProgress,
         [0, 0.7, 1],
-        [0.7, 1, 1.1]
+        [0.7, 1, 1]
     )
 
     const isMobile = window.innerWidth < 768;
