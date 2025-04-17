@@ -6,10 +6,14 @@ import Designs from './components/designs.jsx'
 import Carousel from './components/carousel.jsx'
 import Bgimage from './components/bgimage.jsx'
 import Footer from './components/footer.jsx'
+import Header from './components/header.jsx'
 
 export default function App() {
   return (
-    <div className='flex flex-col items-center'>
+    <div id='main' className='flex flex-col items-center'>
+      <div className='bg-stone-300 w-full'>
+        <Header />
+      </div>
       <div className='bg-stone-300 w-full'>
         <Hero />
       </div>
