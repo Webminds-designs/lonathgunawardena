@@ -1,9 +1,9 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Creative_depth from './creative_depth'
 import sail from '/images/sail.png'
 import bird from '/images/bird.png'
 import flowers from '/images/flowers.png'
-import { motion, useScroll } from 'motion/react'
+import { motion } from 'motion/react'
 
 export default function pixels() {
     
