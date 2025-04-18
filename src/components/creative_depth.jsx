@@ -6,15 +6,8 @@ import image3 from '/images/image3.png'
 import { motion, useScroll, useTransform } from 'motion/react'
 
 export default function creative_depth() {
-    const containerRef = useRef(null);
-    const [isMobile, setIsMobile] = useState(false);
-    
-    useEffect(() => {
-        if (window.innerWidth <= 1023) {
-            setIsMobile(true);
-        }
-    }, []);
 
+    const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
@@ -38,14 +31,11 @@ export default function creative_depth() {
                 </div>
             </div>
 
-            {/* image flow */}
-            <div className='relative flex flex-col-reverse lg:space-y-0 lg:flex-row w-full lg:h-48 xl:h-72 overflow-hidden'>
-                {/* Mobile: centered with proper spacing */}
+            {/* desktop view */}
+            <div className='hidden relative lg:flex flex-col-reverse lg:space-y-0 lg:flex-row w-full lg:h-48 xl:h-72 overflow-hidden'>
                 <motion.div
                     initial={{ insetInline: '0%' }}
-                    style={isMobile ? {
-                        backgroundImage: `url(${image})`
-                    } : {
+                    style={{
                         backgroundImage: `url(${image})`,
                         x: useTransform(scrollYProgress, [0, 0.3], ['0%', '90%']),
                     }}
@@ -53,9 +43,7 @@ export default function creative_depth() {
                 />
                 <motion.div
                     initial={{ insetInline: '0%' }}
-                    style={isMobile ? {
-                        backgroundImage: `url(${image1})`
-                    } : {
+                    style={{
                         backgroundImage: `url(${image1})`,
                         x: useTransform(scrollYProgress, [0, 0.3], ['0%', '40%']),
                     }}
@@ -63,9 +51,7 @@ export default function creative_depth() {
                 />
                 <motion.div
                     initial={{ insetInline: '0%' }}
-                    style={isMobile ? {
-                        backgroundImage: `url(${image2})`
-                    } : {
+                    style={{
                         backgroundImage: `url(${image2})`,
                         x: useTransform(scrollYProgress, [0, 0.3], ['0%', '-20%']),
                     }}
@@ -73,12 +59,34 @@ export default function creative_depth() {
                 />
                 <motion.div
                     initial={{ insetInline: '0%' }}
-                    style={isMobile ? {
-                        backgroundImage: `url(${image3})`
-                    } : {
+                    style={{
                         backgroundImage: `url(${image3})`,
                         x: useTransform(scrollYProgress, [0, 0.3], ['0%', '-90%']),
                     }}
+                    className='mx-auto my-4 w-full lg:absolute lg:w-1/3 lg:left-0 lg:bottom-0 h-48 md:h-96 lg:h-48 xl:h-72 bg-cover bg-center rounded-2xl'
+                />
+            </div>
+            
+            {/* mobile view */}
+            <div className='lg:hidden relative flex flex-col-reverse lg:space-y-0 lg:flex-row w-full lg:h-48 xl:h-72 overflow-hidden'>
+                <motion.div
+                    initial={{ insetInline: '0%' }}
+                    style={{ backgroundImage: `url(${image})` }}
+                    className='mx-auto my-4 w-[40%] md:w-[20em] lg:absolute lg:w-1/3 lg:right-0 lg:bottom-6 xl:bottom-8 h-24 md:h-52 lg:h-32 xl:h-50 bg-cover bg-center rounded-2xl'
+                />
+                <motion.div
+                    initial={{ insetInline: '0%' }}
+                    style={{ backgroundImage: `url(${image1})` }}
+                    className='mx-auto my-4 w-[60%] md:w-[30em] lg:absolute lg:w-1/3 lg:left-1/2 lg:bottom-4 xl:bottom-6 h-32 md:h-64 lg:h-36 xl:h-58 bg-cover bg-center rounded-2xl'
+                />
+                <motion.div
+                    initial={{ insetInline: '0%' }}
+                    style={{ backgroundImage: `url(${image2})` }}
+                    className='mx-auto my-4 w-[80%] md:w-[35em] lg:absolute lg:w-1/3 lg:left-1/4 lg:bottom-2 xl:bottom-4 h-40 md:h-72 lg:h-42 xl:h-64 bg-cover bg-center rounded-2xl'
+                />
+                <motion.div
+                    initial={{ insetInline: '0%' }}
+                    style={{ backgroundImage: `url(${image3})` }}
                     className='mx-auto my-4 w-full lg:absolute lg:w-1/3 lg:left-0 lg:bottom-0 h-48 md:h-96 lg:h-48 xl:h-72 bg-cover bg-center rounded-2xl'
                 />
             </div>
