@@ -3,7 +3,7 @@ import { motion } from 'motion/react'
 
 export default function designs() {
   return (
-    <div className='flex flex-col px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32 space-y-10'>
+    <div id='designs' className='flex flex-col px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32 space-y-10'>
       <p className='font-reviewheavy flex flex-col items-center text-5xl md:text-8xl lg:text-9xl xl:text-[10em] 2xl:text-[16em] text-black'>
         <motion.span
           initial="offscreen"

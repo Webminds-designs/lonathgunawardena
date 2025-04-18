@@ -4,50 +4,112 @@ import selfie from '/images/selfie.png'
 import { motion, useScroll, useTransform } from 'motion/react'
 
 function useResponsiveTransform(scrollProgress, breakpoints) {
-  const [values, setValues] = useState({
-    mobile: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -60, -60] },
-    tablet: { scale: [1, 1, 0.25, 0.25], y: [-30, -30, -80, -80] },
-    laptop: { scale: [1, 1, 0.23, 0.23], y: [-35, -35, -110, -110] },
-    laptopL: { scale: [1, 1, 0.22, 0.22], y: [-40, -40, -130, -130] },
-    desktop: { scale: [1, 1, 0.2, 0.2], y: [-50, -50, -147, -147] },
-    fourK: { scale: [1, 1, 0.18, 0.18], y: [-60, -60, -130, -130] }
-  });
+    const [values, setValues] = useState({
+        mobile: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -60, -60] },
+        tablet: { scale: [1, 1, 0.25, 0.25], y: [-30, -30, -80, -80] },
+        laptop: { scale: [1, 1, 0.23, 0.23], y: [-35, -35, -110, -110] },
+        laptopL: { scale: [1, 1, 0.22, 0.22], y: [-40, -40, -130, -130] },
+        desktop: { scale: [1, 1, 0.2, 0.2], y: [-50, -50, -147, -147] },
+        fourK: { scale: [1, 1, 0.18, 0.18], y: [-60, -60, -130, -130] }
+    });
 
-  const [currentBreakpoint, setCurrentBreakpoint] = useState('desktop');
-  
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth <= 425) setCurrentBreakpoint('mobile');
-      else if (window.innerWidth <= 768) setCurrentBreakpoint('tablet');
-      else if (window.innerWidth <= 1024) setCurrentBreakpoint('laptop');
-      else if (window.innerWidth <= 1440) setCurrentBreakpoint('laptopL');
-      else if (window.innerWidth <= 2560) setCurrentBreakpoint('desktop');
-      else setCurrentBreakpoint('fourK');
-    }
-    
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    const [currentBreakpoint, setCurrentBreakpoint] = useState('desktop');
 
-  const scaleTransform = useTransform(
-    scrollProgress, 
-    breakpoints, 
-    values[currentBreakpoint].scale
-  );
-  
-  const yTransform = useTransform(
-    scrollProgress, 
-    breakpoints, 
-    values[currentBreakpoint].y
-  );
+    useEffect(() => {
+        function handleResize() {
+            if (window.innerWidth <= 425) setCurrentBreakpoint('mobile');
+            else if (window.innerWidth <= 768) setCurrentBreakpoint('tablet');
+            else if (window.innerWidth <= 1024) setCurrentBreakpoint('laptop');
+            else if (window.innerWidth <= 1440) setCurrentBreakpoint('laptopL');
+            else if (window.innerWidth <= 2560) setCurrentBreakpoint('desktop');
+            else setCurrentBreakpoint('fourK');
+        }
 
-  return { scaleTransform, yTransform };
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const scaleTransform = useTransform(
+        scrollProgress,
+        breakpoints,
+        values[currentBreakpoint].scale
+    );
+
+    const yTransform = useTransform(
+        scrollProgress,
+        breakpoints,
+        values[currentBreakpoint].y
+    );
+
+    return { scaleTransform, yTransform };
 }
 
 export default function Hero() {
     const containerRef = useRef(null)
     const selfieRef = useRef(null)  // Add a new ref for the selfie section
+    const pixelsRef = useRef(null)
+    const designsRef = useRef(null)
+    const footerRef = useRef(null)
+
+    useEffect(() => {
+        // get the pixels div element
+        pixelsRef.current = document.getElementById('pixels')
+        // get the designs div element
+        designsRef.current = document.getElementById('designs')
+        // get the footer div element
+        footerRef.current = document.getElementById('footer')
+    }, []);
+
+    // Track when pixels section intersects with header
+    const { scrollYProgress: pixelsScrollProgress } = useScroll({
+        target: pixelsRef,
+        offset: ["start end", "start start"] // From pixels entering viewport to reaching top
+    })
+
+    // Track when designs section intersects with header
+    const { scrollYProgress: designsScrollProgress } = useScroll({
+        target: designsRef,
+        offset: ["start end", "start start"] // From designs entering viewport to reaching top
+    })
+
+    // Track when footer section intersects with header
+    const { scrollYProgress: footerScrollProgress } = useScroll({
+        target: footerRef,
+        offset: ["start end", "start start"] // From footer entering viewport to reaching top
+    })
+
+    // Transform title text color when pixels section reaches the top
+    const pixelsTitleColor = useTransform(
+        pixelsScrollProgress,
+        [0.9, 1], // When pixels section is almost at the top
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From black to stone-300
+    )
+
+    // Transform title text color when designs section reaches the top
+    const designsTitleColor = useTransform(
+        designsScrollProgress,
+        [0.9, 1], // When designs section is almost at the top
+        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"] // From stone-300 to black
+    )
+
+    // Transform title text color when footer section reaches the top
+    const footerTitleColor = useTransform(
+        footerScrollProgress,
+        [0.9, 1], // When footer section is almost at the top
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From black to stone-300
+    )
+
+    // Combine all text colors for the title
+    const combinedTitleColor = useTransform(
+        [pixelsScrollProgress, designsScrollProgress, footerScrollProgress],
+        ([pixelsProgress, designsProgress, footerProgress]) => {
+            if (footerProgress >= 0.9) return footerTitleColor.get();
+            if (designsProgress >= 0.9) return designsTitleColor.get();
+            if (pixelsProgress >= 0.9) return pixelsTitleColor.get();
+            return "rgb(0, 0, 0)"; // Default text color is black
+        }
+    );
 
     // For a sticky effect where the title stays in place until subtitle reaches top
     const { scrollYProgress } = useScroll({
@@ -69,21 +131,22 @@ export default function Hero() {
     )
 
     const isMobile = window.innerWidth < 768;
-    const animationProgress = isMobile 
+    const animationProgress = isMobile
         ? [0, 0.15, 0.3, 1] // Slower animation on mobile
         : [0, 0.1, 0.2, 1];  // Standard animation on desktop
 
     const { scaleTransform, yTransform } = useResponsiveTransform(scrollYProgress, animationProgress);
 
     return (
-        <div ref={containerRef} className='flex flex-col space-y-5 px-12 w-full max-w-[1920px] mx-auto pb-10 md:pb-14 lg:pb-20 xl:pb-24 2xl:pb-32'>            
+        <div ref={containerRef} className='flex flex-col space-y-5 px-12 w-full max-w-[1920px] mx-auto pb-10 md:pb-14 lg:pb-20 xl:pb-24 2xl:pb-32'>
             {/* title - using position sticky for a more reliable fixed effect */}
-            <motion.div 
-                style={{ 
+            <motion.div
+                style={{
+                    color: combinedTitleColor,
                     scale: scaleTransform,
                     y: yTransform,
                 }}
-                className='fixed top-5 md:-top-4 lg:top-0 xl:-top-8 2xl:-top-10 left-1/2 right-1/2 pt-12 flex flex-col items-center font-rapidresponse z-20 text-black'>
+                className='fixed top-5 md:-top-4 lg:top-0 xl:-top-8 2xl:-top-10 left-1/2 right-1/2 pt-12 flex flex-col items-center font-rapidresponse z-20'>
                 <div className='flex text-[60px] md:text-[140px] lg:text-[180px] xl:text-[265px] 2xl:text-[290px] tracking-[-0.05em] 2xl:leading-[0.9] leading-[0.8]'>
                     <div>L</div>
                     <div>O</div>
@@ -121,7 +184,7 @@ export default function Hero() {
                     </div>
                 </div>
                 <div className='relative w-full max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto lg:mx-0 mt-12 lg:mt-0 h-[300px] md:h-[400px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'>
-                    <div 
+                    <div
                         style={{
                             backgroundImage: `url(${beyondearth})`,
                             backgroundSize: 'cover',
@@ -129,10 +192,10 @@ export default function Hero() {
                             height: '45%',
                             width: '60%',
                             left: '20%',
-                        }} 
+                        }}
                         className='rounded-lg md:rounded-xl xl:rounded-2xl absolute top-0 shadow-2xl'
                     />
-                    <div 
+                    <div
                         style={{
                             backgroundImage: `url(${beyondearth})`,
                             backgroundSize: 'cover',
@@ -140,17 +203,17 @@ export default function Hero() {
                             height: '45%',
                             width: '80%',
                             left: '10%',
-                        }} 
+                        }}
                         className='rounded-lg md:rounded-xl xl:rounded-2xl absolute top-1/10 shadow-2xl'
                     />
-                    <div 
+                    <div
                         style={{
                             backgroundImage: `url(${beyondearth})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             height: '45%',
                             width: '100%',
-                        }} 
+                        }}
                         className='rounded-lg md:rounded-xl xl:rounded-2xl absolute top-2/10 shadow-2xl'
                     />
                 </div>
@@ -160,7 +223,7 @@ export default function Hero() {
             </div>
 
             {/* selfie */}
-            <motion.div 
+            <motion.div
                 ref={selfieRef}
                 style={{
                     scale: selfieScale

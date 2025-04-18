@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Footer() {
     return (
-        <div className='flex flex-col px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
+        <div id='footer' className='flex flex-col px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
             <div className='flex flex-col-reverse lg:flex-row justify-between gap-10'>
                 {/* stylish text - left side */}
                 <div className='flex flex-col w-full lg:w-2/3 justify-center items-center space-y-1 text-black'>
