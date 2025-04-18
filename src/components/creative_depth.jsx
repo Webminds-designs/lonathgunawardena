@@ -47,7 +47,7 @@ export default function creative_depth() {
                         backgroundImage: `url(${image})`
                     } : {
                         backgroundImage: `url(${image})`,
-                        x: useTransform(scrollYProgress, [0, 0.5], ['90%', '0%']),
+                        x: useTransform(scrollYProgress, [0, 0.3], ['0%', '90%']),
                     }}
                     className='mx-auto my-4 w-[40%] md:w-[20em] lg:absolute lg:w-1/3 lg:right-0 lg:bottom-6 xl:bottom-8 h-24 md:h-52 lg:h-32 xl:h-50 bg-cover bg-center rounded-2xl'
                 />
@@ -57,7 +57,7 @@ export default function creative_depth() {
                         backgroundImage: `url(${image1})`
                     } : {
                         backgroundImage: `url(${image1})`,
-                        x: useTransform(scrollYProgress, [0, 0.5], ['40%', '0%']),
+                        x: useTransform(scrollYProgress, [0, 0.3], ['0%', '40%']),
                     }}
                     className='mx-auto my-4 w-[60%] md:w-[30em] lg:absolute lg:w-1/3 lg:left-1/2 lg:bottom-4 xl:bottom-6 h-32 md:h-64 lg:h-36 xl:h-58 bg-cover bg-center rounded-2xl'
                 />
@@ -67,7 +67,7 @@ export default function creative_depth() {
                         backgroundImage: `url(${image2})`
                     } : {
                         backgroundImage: `url(${image2})`,
-                        x: useTransform(scrollYProgress, [0, 0.5], ['-20%', '0%']),
+                        x: useTransform(scrollYProgress, [0, 0.3], ['0%', '-20%']),
                     }}
                     className='mx-auto my-4 w-[80%] md:w-[35em] lg:absolute lg:w-1/3 lg:left-1/4 lg:bottom-2 xl:bottom-4 h-40 md:h-72 lg:h-42 xl:h-64 bg-cover bg-center rounded-2xl'
                 />
@@ -77,7 +77,7 @@ export default function creative_depth() {
                         backgroundImage: `url(${image3})`
                     } : {
                         backgroundImage: `url(${image3})`,
-                        x: useTransform(scrollYProgress, [0, 0.5], ['-90%', '0%']),
+                        x: useTransform(scrollYProgress, [0, 0.3], ['0%', '-90%']),
                     }}
                     className='mx-auto my-4 w-full lg:absolute lg:w-1/3 lg:left-0 lg:bottom-0 h-48 md:h-96 lg:h-48 xl:h-72 bg-cover bg-center rounded-2xl'
                 />
