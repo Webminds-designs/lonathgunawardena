@@ -83,7 +83,7 @@ export default function Hero() {
                     scale: scaleTransform,
                     y: yTransform,
                 }}
-                className='fixed top-5 md:-top-4 lg:top-0 xl:-top-8 2xl:-top-10 left-1/2 right-1/2 pt-12 flex flex-col items-center font-rapidresponse z-20'>
+                className='fixed top-5 md:-top-4 lg:top-0 xl:-top-8 2xl:-top-10 left-1/2 right-1/2 pt-12 flex flex-col items-center font-rapidresponse z-20 text-black'>
                 <div className='flex text-[60px] md:text-[140px] lg:text-[180px] xl:text-[265px] 2xl:text-[290px] tracking-[-0.05em] 2xl:leading-[0.9] leading-[0.8]'>
                     <div>L</div>
                     <div>O</div>
@@ -96,7 +96,7 @@ export default function Hero() {
             </motion.div>
 
             {/* sub title */}
-            <div className='flex justify-between items-center mt-30 md:mt-60 lg:mt-72 xl:mt-96 2xl:mt-[30em]'>
+            <div className='flex justify-between items-center mt-30 md:mt-60 lg:mt-72 xl:mt-96 2xl:mt-[30em] text-black'>
                 <div className='h-7 w-2 lg:h-14 lg:w-4 xl:h-16 xl:w-5 2xl:h-20 2xl:w-6 bg-black'></div>
                 <p className='flex flex-col text-center font-reviewcondensed font-bold text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl'>
                     <span>CREATIVE UI/UX &</span>
@@ -106,7 +106,7 @@ export default function Hero() {
             </div>
 
             {/* human centric design */}
-            <div className='relative flex flex-col lg:flex-row justify-between w-full gap-8 mt-5 xl:mt-10 2xl:mt-16'>
+            <div className='relative flex flex-col lg:flex-row justify-between w-full gap-8 mt-5 xl:mt-10 2xl:mt-16 text-black'>
                 <div className='flex flex-col items-center lg:items-start max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto lg:mx-0'>
                     <p className='flex flex-col font-reviewheavy text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl items-center lg:items-start text-center lg:text-left mb-3 xl:mb-5 2xl:mb-8'>
                         <span>HUMAN CENTRIC</span>

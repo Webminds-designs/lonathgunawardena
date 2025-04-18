@@ -34,7 +34,7 @@ export default function designs() {
         >THE START</motion.span>
       </p>
       <div className='flex justify-center w-full mt-10 lg:mt-20'>
-        <p className='font-figtree font-semibold text-center text-xs xl:text-base 2xl:text-2xl max-w-[20em]'>Because Behind Every Layout Is A Strategy, A Story, And A Purpose.</p>
+        <p className='font-figtree font-semibold text-center text-xs xl:text-base 2xl:text-2xl max-w-[20em] text-black'>Because Behind Every Layout Is A Strategy, A Story, And A Purpose.</p>
       </div>
     </div>
   )

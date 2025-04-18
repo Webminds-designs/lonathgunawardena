@@ -5,7 +5,7 @@ export default function Footer() {
         <div className='flex flex-col px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
             <div className='flex flex-col-reverse lg:flex-row justify-between gap-10'>
                 {/* stylish text - left side */}
-                <div className='flex flex-col w-full lg:w-2/3 justify-center items-center space-y-1'>
+                <div className='flex flex-col w-full lg:w-2/3 justify-center items-center space-y-1 text-black'>
                     <div className='relative flex justify-center items-center w-full h-3 md:h-7 2xl:h-12 overflow-hidden'>
                         <div className='absolute -top-3 md:-top-9 2xl:-top-16 flex justify-center font-reviewheavy text-[2em] md:text-[5.5em] 2xl:text-[10em]'>
                             <p>IMPRINT</p>
@@ -44,7 +44,7 @@ export default function Footer() {
                 </div>
 
                 {/* right side text */}
-                <div className='flex flex-col items-center lg:items-end space-y-10 w-full lg:w-1/3'>
+                <div className='flex flex-col items-center lg:items-end space-y-10 w-full lg:w-1/3 text-black'>
                     <p className='flex flex-col font-reviewheavy text-4xl xl:text-5xl 2xl:text-7xl text-center lg:text-right'>
                         <span>BE PART OF THE </span>
                         <span>VISION</span>
@@ -58,7 +58,7 @@ export default function Footer() {
             <div className="w-full h-px bg-stone-400 mt-20"></div>
 
             {/* bottom row */}
-            <div className='flex flex-col lg:flex-row justify-between gap-10 font-reviewheavy text-sm md:text-md xl:text-xl 2xl:text-3xl text-center lg:text-left mt-5 lg:mt-10'>
+            <div className='flex flex-col lg:flex-row justify-between gap-10 font-reviewheavy text-sm md:text-md xl:text-xl 2xl:text-3xl text-center lg:text-left mt-5 lg:mt-10 text-black'>
                 <p>CREATIVE DESIGN & DIGITAL EXPERIENCES.</p>
                 <p>UI/UX · BRANDING · GRAPHIC DESIGN</p>
                 <p>lk.gcm29@gmail.com</p>
