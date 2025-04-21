@@ -61,7 +61,7 @@ export default function Footer() {
             <div className='flex flex-col lg:flex-row justify-between gap-10 font-reviewheavy text-sm md:text-md xl:text-xl 2xl:text-3xl text-center lg:text-left mt-5 lg:mt-10 text-black'>
                 <p>CREATIVE DESIGN & DIGITAL EXPERIENCES.</p>
                 <p>UI/UX · BRANDING · GRAPHIC DESIGN</p>
-                <p>lk.gcm29@gmail.com</p>
+                {/* <p>lk.gcm29@gmail.com</p> */}
             </div>
             
         </div>

@@ -1,6 +1,4 @@
 import React from 'react'
-import mirror from '/images/mirror.png'
-import eagle from '/images/eagle.png'
 import octopus from '/images/octopus.png'
 import diagonalley from '/images/diagonalley.png'
 
