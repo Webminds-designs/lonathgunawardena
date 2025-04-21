@@ -1,8 +1,8 @@
 import React from 'react'
 import Creative_depth from './creative_depth'
-import sail from '/images/sail.png'
-import bird from '/images/bird.png'
-import flowers from '/images/flowers.png'
+import comingsoon from '/images/coming_soon.png'
+import statue from '/images/statue.png'
+import tortoise from '/images/tortoise.png'
 import { motion } from 'motion/react'
 
 export default function pixels() {
@@ -73,12 +73,12 @@ export default function pixels() {
                 <div className='w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
                     <figure className="diff aspect-16/9 rounded-t-2xl" tabIndex={0}>
                         <div className="diff-item-1" role="img" tabIndex={0}>
-                            <img alt="daisy" src={sail} />
+                            <img alt="daisy" src={tortoise} />
                         </div>
                         <div className="diff-item-2" role="img">
                             <img
                                 alt="daisy"
-                                src={bird} />
+                                src={tortoise} />
                         </div>
                         <div className="diff-resizer"></div>
                     </figure>
@@ -89,12 +89,12 @@ export default function pixels() {
                 <div className='w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
                     <figure className="diff aspect-16/9 rounded-t-2xl" tabIndex={0}>
                         <div className="diff-item-1" role="img" tabIndex={0}>
-                            <img alt="daisy" src={bird} />
+                            <img alt="daisy" src={statue} />
                         </div>
                         <div className="diff-item-2" role="img">
                             <img
                                 alt="daisy"
-                                src={sail} />
+                                src={statue} />
                         </div>
                         <div className="diff-resizer"></div>
                     </figure>
@@ -150,7 +150,7 @@ export default function pixels() {
             {/* art and culture */}
             <div
                 style={{
-                    backgroundImage: `url(${flowers})`,
+                    backgroundImage: `url(${comingsoon})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
