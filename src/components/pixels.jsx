@@ -104,7 +104,20 @@ export default function pixels() {
                 </div>
             </div> */}
             <div className='flex flex-col lg:flex-row justify-center gap-6'>
-                <div className='flex flex-col justify-between w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
+                <motion.div 
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    variants={{
+                        offscreen: { opacity: 0, y: 100 },
+                        onscreen: { opacity: 1, y: 0 },
+                    }}
+                    whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                        transition: { duration: 0.2 } 
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className='flex flex-col justify-between w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
                     <div
                         style={{
                             backgroundImage: `url(${tortoise})`,
@@ -115,10 +128,23 @@ export default function pixels() {
                     />
                     <p className='font-reviewheavy text-lg lg:text-2xl text-white uppercase mx-5'>Not Just Visuals—Visual Statements</p>
                     <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5'>Explore designs built to turn heads and leave an impact.</p>
-                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black'>Explore Brand Designs</div>
-                </div>
+                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</div>
+                </motion.div>
 
-                <div className='flex flex-col justify-between w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
+                <motion.div 
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    variants={{
+                        offscreen: { opacity: 0, y: 100 },
+                        onscreen: { opacity: 1, y: 0 },
+                    }}
+                    whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                        transition: { duration: 0.2 } 
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className='flex flex-col justify-between w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
                     <div
                         style={{
                             backgroundImage: `url(${statue})`,
@@ -129,8 +155,8 @@ export default function pixels() {
                     />
                     <p className='font-reviewheavy text-lg lg:text-2xl text-white uppercase mx-5'>IDENTITY DESIGNS THAT STAND OUT</p>
                     <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5' >Every logo starts with a line. Here’s how I shape abstract ideas into distinct, memorable brand identities.</p>
-                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black'>Explore Brand Designs</div>
-                </div>
+                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</div>
+                </motion.div>
             </div>
 
             {/* header 2 */}
