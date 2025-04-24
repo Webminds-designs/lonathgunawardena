@@ -1,8 +1,8 @@
 import React from 'react'
 import Creative_depth from './creative_depth'
-import sail from '/images/sail.png'
-import bird from '/images/bird.png'
-import flowers from '/images/flowers.png'
+import comingsoon from '/images/coming_soon.png'
+import statue from '/images/statue.png'
+import tortoise from '/images/tortoise.png'
 import { motion } from 'motion/react'
 
 export default function pixels() {
@@ -69,16 +69,16 @@ export default function pixels() {
             </motion.div>
 
             {/* 2 cards */}
-            <div className='flex flex-col lg:flex-row justify-center gap-6'>
+            {/* <div className='flex flex-col lg:flex-row justify-center gap-6'>
                 <div className='w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
                     <figure className="diff aspect-16/9 rounded-t-2xl" tabIndex={0}>
                         <div className="diff-item-1" role="img" tabIndex={0}>
-                            <img alt="daisy" src={sail} />
+                            <img alt="daisy" src={tortoise} />
                         </div>
                         <div className="diff-item-2" role="img">
                             <img
                                 alt="daisy"
-                                src={bird} />
+                                src={tortoise} />
                         </div>
                         <div className="diff-resizer"></div>
                     </figure>
@@ -89,12 +89,12 @@ export default function pixels() {
                 <div className='w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
                     <figure className="diff aspect-16/9 rounded-t-2xl" tabIndex={0}>
                         <div className="diff-item-1" role="img" tabIndex={0}>
-                            <img alt="daisy" src={bird} />
+                            <img alt="daisy" src={statue} />
                         </div>
                         <div className="diff-item-2" role="img">
                             <img
                                 alt="daisy"
-                                src={sail} />
+                                src={statue} />
                         </div>
                         <div className="diff-resizer"></div>
                     </figure>
@@ -102,6 +102,61 @@ export default function pixels() {
                     <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5' >See how thoughtful interactions and visual polish transform raw ideas into intuitive, high-impact interfaces.</p>
                     <div className='text-black bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit'>Check More Projects</div>
                 </div>
+            </div> */}
+            <div className='flex flex-col lg:flex-row justify-center gap-6'>
+                <motion.div 
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    variants={{
+                        offscreen: { opacity: 0, y: 100 },
+                        onscreen: { opacity: 1, y: 0 },
+                    }}
+                    whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                        transition: { duration: 0.2 } 
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className='flex flex-col justify-between w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
+                    <div
+                        style={{
+                            backgroundImage: `url(${tortoise})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                        className='w-full h-[150px] md:h-[200px] lg:h-[225px] xl:h-[275px] 2xl:h-[325px] rounded-t-2xl overflow-hidden'
+                    />
+                    <p className='font-reviewheavy text-lg lg:text-2xl text-white uppercase mx-5'>Not Just Visuals—Visual Statements</p>
+                    <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5'>Explore designs built to turn heads and leave an impact.</p>
+                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</div>
+                </motion.div>
+
+                <motion.div 
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    variants={{
+                        offscreen: { opacity: 0, y: 100 },
+                        onscreen: { opacity: 1, y: 0 },
+                    }}
+                    whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                        transition: { duration: 0.2 } 
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className='flex flex-col justify-between w-full lg:w-1/3 space-y-7 rounded-2xl bg-neutral-900 pb-8'>
+                    <div
+                        style={{
+                            backgroundImage: `url(${statue})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                        className='w-full h-[150px] md:h-[200px] lg:h-[225px] xl:h-[275px] 2xl:h-[325px] rounded-t-2xl overflow-hidden'
+                    />
+                    <p className='font-reviewheavy text-lg lg:text-2xl text-white uppercase mx-5'>IDENTITY DESIGNS THAT STAND OUT</p>
+                    <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5' >Every logo starts with a line. Here’s how I shape abstract ideas into distinct, memorable brand identities.</p>
+                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</div>
+                </motion.div>
             </div>
 
             {/* header 2 */}
@@ -150,7 +205,7 @@ export default function pixels() {
             {/* art and culture */}
             <div
                 style={{
-                    backgroundImage: `url(${flowers})`,
+                    backgroundImage: `url(${comingsoon})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}

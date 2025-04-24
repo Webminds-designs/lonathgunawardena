@@ -1,6 +1,6 @@
 import React from 'react'
-import mirror from '/images/mirror.png'
-import eagle from '/images/eagle.png'
+import octopus from '/images/octopus.png'
+import diagonalley from '/images/diagonalley.png'
 
 export default function precision() {
     return (
@@ -23,7 +23,7 @@ export default function precision() {
             <div className='flex flex-col lg:flex-row gap-10 w-full lg:px-12 max-w-[1920px] mx-auto'>
                 <div
                     style={{
-                        backgroundImage: `url(${mirror})`,
+                        backgroundImage: `url(${octopus})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
@@ -31,9 +31,10 @@ export default function precision() {
                 />
                 <div
                     style={{
-                        backgroundImage: `url(${eagle})`,
-                        backgroundSize: 'cover',
+                        backgroundImage: `url(${diagonalley})`,
+                        backgroundSize: 'contain',
                         backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
                     }}
                     className='w-full h-[30em] md:h-[40em] lg:h-[30em] xl:h-[40em] 2xl:h-[50em] rounded-4xl overflow-hidden'
                 />

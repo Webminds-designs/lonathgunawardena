@@ -5,8 +5,13 @@ import { motion, useScroll, useTransform } from 'motion/react'
 
 function useResponsiveTransform(scrollProgress, breakpoints) {
     const [values, setValues] = useState({
-        mobile: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -60, -60] },
+        mobileXS: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -80, -80] },
+        mobileS: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -80, -80] },
+        mobile: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -80, -80] },
+        mobileM: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -80, -80] },
+        mobileL: { scale: [1, 1, 0.2, 0.2], y: [-20, -20, -60, -60] },
         tablet: { scale: [1, 1, 0.25, 0.25], y: [-30, -30, -80, -80] },
+        tabletM: { scale: [1, 1, 0.25, 0.25], y: [-30, -30, -80, -80] },
         laptop: { scale: [1, 1, 0.23, 0.23], y: [-35, -35, -110, -110] },
         laptopL: { scale: [1, 1, 0.22, 0.22], y: [-40, -40, -130, -130] },
         desktop: { scale: [1, 1, 0.2, 0.2], y: [-50, -50, -147, -147] },
@@ -17,8 +22,13 @@ function useResponsiveTransform(scrollProgress, breakpoints) {
 
     useEffect(() => {
         function handleResize() {
-            if (window.innerWidth <= 425) setCurrentBreakpoint('mobile');
+            if (window.innerWidth <= 375) setCurrentBreakpoint('mobileXS');
+            else if (window.innerWidth <= 393) setCurrentBreakpoint('mobileS');
+            else if (window.innerWidth <= 412) setCurrentBreakpoint('mobile');
+            else if (window.innerWidth <= 414) setCurrentBreakpoint('mobileM');
+            else if (window.innerWidth <= 425) setCurrentBreakpoint('mobileL');
             else if (window.innerWidth <= 768) setCurrentBreakpoint('tablet');
+            else if (window.innerWidth <= 834) setCurrentBreakpoint('tabletM');
             else if (window.innerWidth <= 1024) setCurrentBreakpoint('laptop');
             else if (window.innerWidth <= 1440) setCurrentBreakpoint('laptopL');
             else if (window.innerWidth <= 2560) setCurrentBreakpoint('desktop');

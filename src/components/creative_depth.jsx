@@ -32,7 +32,7 @@ export default function creative_depth() {
             </div>
 
             {/* desktop view */}
-            <div className='hidden relative lg:flex flex-col-reverse lg:space-y-0 lg:flex-row w-full lg:h-48 xl:h-72 overflow-hidden'>
+            <div className='hidden relative lg:flex flex-col-reverse lg:space-y-0 lg:flex-row w-full lg:h-48 xl:h-72'>
                 <motion.div
                     initial={{ insetInline: '0%' }}
                     style={{
