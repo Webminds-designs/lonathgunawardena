@@ -4,7 +4,7 @@ import Header from './components/header'
 export default function layout() {
   return (
     <>
-      <div>
+      <div className='w-full'>
         <Header />
       </div>
     </>
