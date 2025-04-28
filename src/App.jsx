@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Hero from './components/hero.jsx'
-import Pixels from './components/pixels.jsx'
-import Precision from './components/precision.jsx'
-import Designs from './components/designs.jsx'
-import Carousel from './components/carousel.jsx'
-import Bgimage from './components/bgimage.jsx'
-import Footer from './components/footer.jsx'
-import Header from './components/header.jsx'
-import Preloader from './components/preloader.jsx'
-import { motion, AnimatePresence } from 'motion/react'
+import HomePage from './home/layout.jsx'
+import ProjectsPage from './projects/layout.jsx'
+import Preloader from './preloader.jsx'
+import { AnimatePresence } from 'motion/react'
+import { Route, Routes } from 'react-router-dom'
 
 export default function App() {
   const [loading, setLoading] = useState(true)
@@ -75,30 +70,10 @@ export default function App() {
           transition: 'opacity 0.5s ease' 
         }}
       >
-        <div className='bg-stone-300 w-full'>
-          <Header />
-        </div>
-        <div className='bg-stone-300 w-full'>
-          <Hero />
-        </div>
-        <div className='bg-black w-full'>
-          <Pixels />
-        </div>
-        <div className='bg-black w-full'>
-          <Precision />
-        </div>
-        <div className='bg-stone-300 w-full'>
-          <Designs />
-        </div>
-        <div className='bg-black w-full'>
-          <Carousel />
-        </div>
-        <div style={{ backgroundImage: `url(/images/launching.png)` }} className='bg-cover bg-center w-full h-screen'>
-          <Bgimage />
-        </div>
-        <div className='bg-stone-300 w-full'>
-          <Footer />
-        </div>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/projects' element={<ProjectsPage />} />
+        </Routes>
       </div>
     </>
   )
