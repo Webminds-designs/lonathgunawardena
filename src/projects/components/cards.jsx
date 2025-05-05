@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "motion/react";
-
-const images = [
-    "/images/image.png",
-    "/images/image1.png",
-    "/images/brand3.png",
-    "/images/wristband.png",
-];
 
 const CardsSection = ({ image, isDarkened }) => {
-    const brightness = isDarkened ? 0.7 : 1; // Darken if isDarkened is true
+    const brightness = isDarkened ? 0.7 : 1;
 
     return (
-        <motion.div
-            className="h-screen flex items-start justify-center card-section"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+        <div
+            className="flex items-center justify-center card-section p-4"
             style={{
                 position: "sticky",
                 top: 0,
@@ -24,18 +13,44 @@ const CardsSection = ({ image, isDarkened }) => {
                 transition: "filter 0.5s ease-in-out",
             }}
         >
-            <img
-                src={image}
-                className="rounded-2xl shadow-md object-cover"
-            />
-        </motion.div>
+            <div 
+                className="w-full mx-auto opacity-0 translate-y-12"
+                style={{
+                    animation: "fadeInUp 0.8s forwards",
+                }}
+            >
+                <img
+                    src={image}
+                    className="rounded-2xl object-cover w-full h-auto"
+                    alt="Card image"
+                />
+            </div>
+        </div>
     );
 };
 
-export default function cards() {
+export default function Cards() {
     const [currentSection, setCurrentSection] = useState(0);
+    const [images, setImages] = useState([
+        "/images/image.png",
+        "/images/image1.png",
+        "/images/brand3.png",
+        "/images/wristband.png",
+    ]);
 
     useEffect(() => {
+        // Add CSS animation for fade-in effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.append(style);
+
         const handleScroll = () => {
             const sections = document.querySelectorAll(".card-section");
             let activeIndex = 0;
@@ -43,8 +58,13 @@ export default function cards() {
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect();
 
-                // Check if the top of the section is entering the viewport
-                if (rect.top >= 0 && rect.top < window.innerHeight) {
+                // More reliable intersection detection
+                const sectionHeight = section.offsetHeight;
+                const isVisible = 
+                    (rect.top <= window.innerHeight / 2) && 
+                    (rect.bottom >= window.innerHeight / 2);
+
+                if (isVisible) {
                     activeIndex = index;
                 }
             });
@@ -52,9 +72,20 @@ export default function cards() {
             setCurrentSection(activeIndex);
         };
 
+        // Initial call to set the correct section on page load
+        handleScroll();
         window.addEventListener("scroll", handleScroll);
+        
+        // Handle resize events to adjust layout if needed
+        const handleResize = () => {
+            handleScroll();
+        };
+        window.addEventListener("resize", handleResize);
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
+            document.head.removeChild(style);
         };
     }, []);
 
@@ -64,9 +95,9 @@ export default function cards() {
                 <CardsSection
                     key={index}
                     image={image}
-                    isDarkened={index < currentSection} // Darken sections before the current one
+                    isDarkened={index < currentSection}
                 />
             ))}
         </div>
     );
-};
+}

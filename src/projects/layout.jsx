@@ -11,6 +11,7 @@ import CrepeRunner from './components/crepeRunner'
 import DiagonAlley from './components/diagonAlley'
 import DroneLab from './components/droneLab'
 import Visuals from './components/visuals'
+import Carousel from './components/carousel'
 
 export default function layout() {
   return (
@@ -27,6 +28,7 @@ export default function layout() {
       <DiagonAlley />
       <DroneLab />
       <Visuals />
+      <Carousel />
     </div>
   )
 }
