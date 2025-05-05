@@ -13,6 +13,7 @@ import DroneLab from './components/droneLab'
 import Visuals from './components/visuals'
 import Carousel from './components/carousel'
 import LetsTalk from './components/letsTalk'
+import Footer from './components/footer'
 
 export default function layout() {
   return (
@@ -31,6 +32,7 @@ export default function layout() {
       <Visuals />
       <Carousel />
       <LetsTalk />
+      <Footer />
     </div>
   )
 }
