@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { motion } from 'motion/react'
+import Cards from './cards'
 
 export default function visuals() {
     
@@ -46,7 +47,7 @@ export default function visuals() {
             </div>
 
             {/* cards */}
-            <div className='relative'></div>
+            <Cards />
         </div>
     )
 }
