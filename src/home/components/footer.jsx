@@ -1,6 +1,8 @@
 import React from 'react'
+import { HashLink } from 'react-router-hash-link'
 
 export default function Footer() {
+
     return (
         <div id='footer' className='flex flex-col px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
             <div className='flex flex-col-reverse lg:flex-row justify-between gap-10'>
@@ -50,7 +52,7 @@ export default function Footer() {
                         <span>VISION</span>
                     </p>
                     <p className='font-figtree text-sm xl:text-base 2xl:text-2xl text-center lg:text-right'>I’m always looking to collaborate with forward-thinking brands, startups, and creatives who value thoughtful design and bold ideas. Whether you need a digital product, a new identity, or just want to brainstorm something beautiful—this is your invitation to start.The next story starts with a conversation.</p>
-                    <div className='font-reviewregular text-sm xl:text-base 2xl:text-2xl bg-black text-white text-right px-10 py-5 rounded-xl'>LET'S CREATE TOGETHER</div>
+                    <HashLink to='/projects/#contact' smooth className='font-reviewregular text-sm xl:text-base 2xl:text-2xl bg-black text-white text-right px-10 py-5 rounded-xl'>LET'S CREATE TOGETHER</HashLink>
                 </div>
             </div>
 

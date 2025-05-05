@@ -3,6 +3,7 @@ import beyondearth from '/images/beyond_earth.png'
 import selfie from '/images/selfie.png'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 function useResponsiveTransform(scrollProgress, breakpoints) {
     const [values, setValues] = useState({
@@ -190,9 +191,9 @@ export default function Hero() {
                         I'm Lonath Gunawardena — a UI/UX designer and visual creative focused on building intuitive, elegant digital products and memorable brand identities.
                         From mobile apps to Websites and logos, I merge strategy with creativity to help ideas take shape and come alive.
                     </p>
-                    <Link to={'/projects'} className='bg-black text-gray-200 font-reviewcondensed flex items-center justify-center px-8 py-4 md:px-10 md:py-5 xl:px-12 xl:py-6 2xl:px-16 2xl:py-8 rounded-lg text-base md:text-lg xl:text-xl 2xl:text-2xl hover:cursor-pointer hover:bg-gray-800 transition-colors'>
+                    <HashLink to='/projects/#contact' smooth className='bg-black text-gray-200 font-reviewcondensed flex items-center justify-center px-8 py-4 md:px-10 md:py-5 xl:px-12 xl:py-6 2xl:px-16 2xl:py-8 rounded-lg text-base md:text-lg xl:text-xl 2xl:text-2xl hover:cursor-pointer hover:bg-gray-800 transition-colors'>
                         LET'S COLLABORATE
-                    </Link>
+                    </HashLink>
                 </div>
                 <div className='relative w-full max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto lg:mx-0 mt-12 lg:mt-0 h-[300px] md:h-[400px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'>
                     <div

@@ -43,7 +43,7 @@ export default function LetsTalk() {
     };
 
     return (
-        <div className='flex flex-col space-y-10 px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
+        <div id='contact' className='flex flex-col space-y-10 px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
             {/* header */}
             <motion.span
                 initial="offscreen"

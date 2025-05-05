@@ -4,6 +4,7 @@ import comingsoon from '/images/coming_soon.png'
 import statue from '/images/statue.png'
 import tortoise from '/images/tortoise.png'
 import { motion } from 'motion/react'
+import { HashLink } from 'react-router-hash-link'
 
 export default function pixels() {
 
@@ -128,7 +129,7 @@ export default function pixels() {
                     />
                     <p className='font-reviewheavy text-lg lg:text-2xl text-white uppercase mx-5'>Not Just Visuals—Visual Statements</p>
                     <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5'>Explore designs built to turn heads and leave an impact.</p>
-                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</div>
+                    <HashLink to='/projects/' className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</HashLink>
                 </motion.div>
 
                 <motion.div 
@@ -155,7 +156,7 @@ export default function pixels() {
                     />
                     <p className='font-reviewheavy text-lg lg:text-2xl text-white uppercase mx-5'>IDENTITY DESIGNS THAT STAND OUT</p>
                     <p className='text-xs xl:text-base 2xl:text-2xl text-white mx-5' >Every logo starts with a line. Here’s how I shape abstract ideas into distinct, memorable brand identities.</p>
-                    <div className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</div>
+                    <HashLink to='/projects/' className='bg-white font-figtree text-xs xl:text-base 2xl:text-2xl ml-5 px-8 py-1 rounded-md w-fit text-black hover:cursor-pointer'>Explore Brand Designs</HashLink>
                 </motion.div>
             </div>
 
