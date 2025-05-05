@@ -7,6 +7,7 @@ import SocialMedia from './components/socialMedia'
 import OnlyIconsText from './components/onlyIconsText'
 import ComingSoonPosters from './components/comingSoonPosters'
 import SsProductions from './components/ssProductions'
+import CrepeRunner from './components/crepeRunner'
 
 export default function layout() {
   return (
@@ -19,6 +20,7 @@ export default function layout() {
       <OnlyIconsText />
       <ComingSoonPosters />
       <SsProductions />
+      <CrepeRunner />
     </div>
   )
 }
