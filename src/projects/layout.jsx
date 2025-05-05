@@ -12,6 +12,7 @@ import DiagonAlley from './components/diagonAlley'
 import DroneLab from './components/droneLab'
 import Visuals from './components/visuals'
 import Carousel from './components/carousel'
+import LetsTalk from './components/letsTalk'
 
 export default function layout() {
   return (
@@ -29,6 +30,7 @@ export default function layout() {
       <DroneLab />
       <Visuals />
       <Carousel />
+      <LetsTalk />
     </div>
   )
 }
