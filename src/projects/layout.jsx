@@ -10,6 +10,7 @@ import SsProductions from './components/ssProductions'
 import CrepeRunner from './components/crepeRunner'
 import DiagonAlley from './components/diagonAlley'
 import DroneLab from './components/droneLab'
+import Visuals from './components/visuals'
 
 export default function layout() {
   return (
@@ -25,6 +26,7 @@ export default function layout() {
       <CrepeRunner />
       <DiagonAlley />
       <DroneLab />
+      <Visuals />
     </div>
   )
 }
