@@ -6,6 +6,7 @@ import ToggleBar from './components/toggleBar'
 import SocialMedia from './components/socialMedia'
 import OnlyIconsText from './components/onlyIconsText'
 import ComingSoonPosters from './components/comingSoonPosters'
+import SsProductions from './components/ssProductions'
 
 export default function layout() {
   return (
@@ -17,6 +18,7 @@ export default function layout() {
       <SocialMedia />
       <OnlyIconsText />
       <ComingSoonPosters />
+      <SsProductions />
     </div>
   )
 }
