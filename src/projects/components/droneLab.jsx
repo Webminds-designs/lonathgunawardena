@@ -15,7 +15,7 @@ export default function droneLab() {
 
             {/* image */}
             <img
-                src='/images/dronelabs.png'
+                src='/images/dronelabs.webp'
                 className='rounded-xl w-full max-w-4xl'
             />
         </div>

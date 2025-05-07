@@ -1,6 +1,6 @@
 import React from 'react'
 import Creative_depth from './creative_depth'
-import comingsoon from '/images/coming_soon.png'
+import comingsoon from '/images/coming_soon.webp'
 import statue from '/images/statue.png'
 import tortoise from '/images/tortoise.png'
 import { motion } from 'motion/react'

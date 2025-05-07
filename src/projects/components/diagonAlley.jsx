@@ -15,7 +15,7 @@ export default function diagonAlley() {
 
             {/* image */}
             <img
-                src='/images/diagonalley.png'
+                src='/images/diagonalley.webp'
                 className='rounded-xl w-full max-w-4xl'
             />
         </div>

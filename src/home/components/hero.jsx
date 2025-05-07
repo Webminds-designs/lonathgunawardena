@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
-import beyondearth from '/images/beyond_earth.png'
-import selfie from '/images/selfie.png'
+import beyondearth from '/images/beyond_earth.webp'
+import selfie from '/images/selfie.webp'
 import { motion, useScroll, useTransform } from 'motion/react'
-import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
 function useResponsiveTransform(scrollProgress, breakpoints) {
@@ -196,37 +195,52 @@ export default function Hero() {
                     </HashLink>
                 </div>
                 <div className='relative w-full max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto lg:mx-0 mt-12 lg:mt-0 h-[300px] md:h-[400px] lg:h-[450px] xl:h-[550px] 2xl:h-[650px]'>
-                    <div
+                    <img
+                        src={beyondearth}
+                        alt="Background Image 1"
                         style={{
-                            backgroundImage: `url(${beyondearth})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
                             height: '45%',
                             width: '60%',
+                            position: 'absolute',
+                            top: '0',
                             left: '20%',
+                            borderRadius: '1rem',   // Rounded corners (adjust as needed)
+                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Shadow effect
                         }}
-                        className='rounded-lg md:rounded-xl xl:rounded-2xl absolute top-0 shadow-2xl'
                     />
-                    <div
+
+                    <img
+                        src={beyondearth}
+                        alt="Background Image 2"
                         style={{
-                            backgroundImage: `url(${beyondearth})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
                             height: '45%',
                             width: '80%',
+                            position: 'absolute',
+                            top: '10%',
                             left: '10%',
+                            borderRadius: '1rem',   // Rounded corners (adjust as needed)
+                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Shadow effect
                         }}
-                        className='rounded-lg md:rounded-xl xl:rounded-2xl absolute top-1/10 shadow-2xl'
                     />
-                    <div
+
+                    <img
+                        loading='lazy'
+                        src={beyondearth}
+                        alt="Background Image 3"
                         style={{
-                            backgroundImage: `url(${beyondearth})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
                             height: '45%',
                             width: '100%',
+                            position: 'absolute',
+                            top: '20%',
+                            borderRadius: '1rem',   // Rounded corners (adjust as needed)
+                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Shadow effect
                         }}
-                        className='rounded-lg md:rounded-xl xl:rounded-2xl absolute top-2/10 shadow-2xl'
                     />
                 </div>
 

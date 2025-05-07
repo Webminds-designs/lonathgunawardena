@@ -19,7 +19,7 @@ export default function comingSoonPosters() {
                     </p>
                 </div>
                 <img
-                    src='/images/coming_soon.png'
+                    src='/images/coming_soon.webp'
                     className='rounded-xl'
                 />
             </div>
@@ -29,7 +29,7 @@ export default function comingSoonPosters() {
                 <div className='flex flex-col w-1/2 space-y-1 md:space-y-5'>
                     <div className='flex w-full h-full space-x-0.5 md:space-x-2.5'>
                         <img
-                            src='/images/coming_soon_post.png'
+                            src='/images/coming_soon_post.webp'
                             className='rounded-xl object-cover w-1/2'
                         />
                         <img
@@ -43,7 +43,7 @@ export default function comingSoonPosters() {
                     />
                 </div>
                 <img
-                    src='/images/coming_soon_insta.png'
+                    src='/images/coming_soon_insta.webp'
                     className='rounded-xl w-1/2 object-cover'
                 />
             </div>

@@ -16,7 +16,7 @@ export default function ssProductions() {
                     className='rounded-xl'
                 />
                 <img
-                    src='/images/beyond_earth.png'
+                    src='/images/beyond_earth.webp'
                     className='rounded-xl'
                 />
             </div>
