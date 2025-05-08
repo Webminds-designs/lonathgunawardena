@@ -84,7 +84,7 @@ export default function LetsTalk() {
                         onMouseLeave={() => setHoveringItem(null)}
                     >
                         <img
-                            src='/images/webminds.png'
+                            src='/images/webminds.webp'
                             className='rounded-xl w-full cursor-none'
                             alt="Webminds Project"
                             onClick={() => window.open('https://webmindsdesigns.com/', '_blank')}
@@ -97,7 +97,7 @@ export default function LetsTalk() {
                         onMouseLeave={() => setHoveringItem(null)}
                     >
                         <img
-                            src='/images/instagram.png'
+                            src='/images/instagram.webp'
                             className='rounded-xl w-full cursor-none'
                             alt="Instagram Project"
                             onClick={() => window.open('https://www.instagram.com/webminds.designs', '_blank')}

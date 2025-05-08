@@ -16,11 +16,11 @@ export default function crepeRunner() {
             {/* images */}
             <div className='flex flex-col space-y-2'>
                 <img
-                    src='/images/image2.png'
+                    src='/images/image2.webp'
                     className='rounded-xl'
                 />
                 <img
-                    src='/images/image3.png'
+                    src='/images/image3.webp'
                     className='rounded-xl'
                 />
             </div>

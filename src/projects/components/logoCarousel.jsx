@@ -64,23 +64,23 @@ function LogoItem({ src }) {
 
 export default function LogoCarousel() {
   const topRowLogos = [
-    "/images/logo1.png",
-    "/images/logo2.png",
-    "/images/logo3.png",
-    "/images/logo4.png",
-    "/images/logo5.png",
-    "/images/logo6.png",
-    "/images/logo7.png",
+    "/images/logo1.webp",
+    "/images/logo2.webp",
+    "/images/logo3.webp",
+    "/images/logo4.webp",
+    "/images/logo5.webp",
+    "/images/logo6.webp",
+    "/images/logo7.webp",
   ];
 
   const bottomRowLogos = [
-    "/images/logo1.png",
-    "/images/logo2.png",
-    "/images/logo3.png",
-    "/images/logo4.png",
-    "/images/logo5.png",
-    "/images/logo6.png",
-    "/images/logo7.png",
+    "/images/logo1.webp",
+    "/images/logo2.webp",
+    "/images/logo3.webp",
+    "/images/logo4.webp",
+    "/images/logo5.webp",
+    "/images/logo6.webp",
+    "/images/logo7.webp",
   ];
 
   return (

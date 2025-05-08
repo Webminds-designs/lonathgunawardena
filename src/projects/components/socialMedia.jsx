@@ -3,13 +3,13 @@ import React from 'react'
 export default function socialMedia() {
 
     const socialMediaImages = [
-        '/images/social1.png',
-        '/images/social2.png',
-        '/images/social3.png',
-        '/images/social4.png',
-        '/images/social5.png',
-        '/images/social6.png',
-        '/images/social7.png',
+        '/images/social1.webp',
+        '/images/social2.webp',
+        '/images/octopus.webp',
+        '/images/social4.webp',
+        '/images/social5.webp',
+        '/images/social6.webp',
+        '/images/social7.webp',
     ]
 
     return (

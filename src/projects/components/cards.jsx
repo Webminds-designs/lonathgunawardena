@@ -32,10 +32,10 @@ const CardsSection = ({ image, isDarkened }) => {
 export default function Cards() {
     const [currentSection, setCurrentSection] = useState(0);
     const [images, setImages] = useState([
-        "/images/image.png",
-        "/images/image1.png",
-        "/images/brand3.png",
-        "/images/wristband.png",
+        "/images/image.webp",
+        "/images/image1.webp",
+        "/images/brand3.webp",
+        "/images/wristband.webp",
     ]);
 
     useEffect(() => {

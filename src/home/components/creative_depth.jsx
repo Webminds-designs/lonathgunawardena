@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
-import image from '/images/image.png'
-import image1 from '/images/image1.png'
-import image2 from '/images/image2.png'
-import image3 from '/images/image3.png'
+import image from '/images/image.webp'
+import image1 from '/images/image1.webp'
+import image2 from '/images/image2.webp'
+import image3 from '/images/image3.webp'
 import { motion, useScroll, useTransform } from 'motion/react'
 
 export default function creative_depth() {

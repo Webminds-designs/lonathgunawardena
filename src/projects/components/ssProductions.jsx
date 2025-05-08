@@ -12,7 +12,7 @@ export default function ssProductions() {
             {/* images */}
             <div className='flex flex-col space-y-2'>
                 <img
-                    src='/images/labourday.png'
+                    src='/images/labourday.webp'
                     className='rounded-xl'
                 />
                 <img

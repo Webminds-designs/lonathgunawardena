@@ -1,8 +1,8 @@
 import React from 'react'
 import Creative_depth from './creative_depth'
 import comingsoon from '/images/coming_soon.webp'
-import statue from '/images/statue.png'
-import tortoise from '/images/tortoise.png'
+import statue from '/images/statue.webp'
+import tortoise from '/images/tortoise.webp'
 import { motion } from 'motion/react'
 import { HashLink } from 'react-router-hash-link'
 

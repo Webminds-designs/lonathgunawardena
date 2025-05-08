@@ -1,5 +1,5 @@
 import React from 'react'
-import octopus from '/images/octopus.png'
+import octopus from '/images/octopus.webp'
 import diagonalley from '/images/diagonalley.webp'
 
 export default function precision() {

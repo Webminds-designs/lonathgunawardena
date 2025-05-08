@@ -6,42 +6,42 @@ export default function heroImage() {
     {
       id: 1,
       name: 'Product 1',
-      image: '/images/product1.jpg',
+      image: '/images/product1.webp',
     },
     {
       id: 2,
       name: 'Product 2',
-      image: '/images/product2.jpg',
+      image: '/images/product2.webp',
     },
     {
       id: 3,
       name: 'Product 3',
-      image: '/images/product3.jpg',
+      image: '/images/product3.webp',
     },
     {
       id: 4,
       name: 'Product 4',
-      image: '/images/product4.jpg',
+      image: '/images/product4.webp',
     },
     {
       id: 5,
       name: 'Product 5',
-      image: '/images/product5.jpg',
+      image: '/images/product5.webp',
     },
     {
       id: 6,
       name: 'Product 6',
-      image: '/images/product6.jpg',
+      image: '/images/product6.webp',
     },
     {
       id: 7,
       name: 'Product 7',
-      image: '/images/product7.jpg',
+      image: '/images/product7.webp',
     },
     {
       id: 8,
       name: 'Product 8',
-      image: '/images/product8.jpg',
+      image: '/images/product8.webp',
     },
   ]
 
@@ -49,7 +49,7 @@ export default function heroImage() {
     <div className='flex flex-col space-y-10 px-12 w-full max-w-[1920px] mx-auto py-10 md:py-14 lg:py-20 xl:py-24 2xl:py-32'>
       {/* main image */}
       <img
-        src='/images/ssproduction.png'
+        src='/images/ssproduction.webp'
         className='rounded-4xl'
       />
 

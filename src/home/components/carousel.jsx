@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
-import photoshop from '/images/photoshop.png'
-import figma from '/images/figma.png'
-import illustrator from '/images/illustrator.png'
-import premiere_pro from '/images/premiere-pro.png'
+import photoshop from '/images/photoshop.webp'
+import figma from '/images/figma.webp'
+import illustrator from '/images/illustrator.webp'
+import premiere_pro from '/images/premiere-pro.webp'
 
 export default function Carousel() {
   const marqueeRef = useRef(null);

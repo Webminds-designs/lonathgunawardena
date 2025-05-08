@@ -33,12 +33,12 @@ export default function comingSoonPosters() {
                             className='rounded-xl object-cover w-1/2'
                         />
                         <img
-                            src='/images/launching_post.png'
+                            src='/images/launching_post.webp'
                             className='rounded-xl object-cover w-1/2'
                         />
                     </div>
                     <img
-                        src='/images/flow.png'
+                        src='/images/flow.webp'
                         className='rounded-xl object-cover'
                     />
                 </div>
@@ -50,7 +50,7 @@ export default function comingSoonPosters() {
 
             {/* bottom image */}
             <img
-                src='/images/launching.png'
+                src='/images/launching.webp'
                 className='rounded-xl'
             />
         </div>
