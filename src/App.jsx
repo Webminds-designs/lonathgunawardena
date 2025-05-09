@@ -9,15 +9,34 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   const [contentVisible, setContentVisible] = useState(false)
   
-  // Optional: You can use this to ensure all assets are loaded
   useEffect(() => {
-    // This will run after component mounts
+    // Track both images and fonts loading
     const allImages = document.querySelectorAll('img')
     let imagesLoaded = 0
+    let fontsLoaded = false
+    
+    // Function to check if everything is loaded
+    const checkAllLoaded = () => {
+      const areImagesLoaded = allImages.length === 0 || imagesLoaded === allImages.length
+      if (areImagesLoaded && fontsLoaded) {
+        // Everything loaded - give minimum time for preloader visibility
+        setTimeout(() => setLoading(false), 1000)
+      }
+    }
+
+    // Check fonts loading
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        fontsLoaded = true
+        checkAllLoaded()
+      })
+    } else {
+      // Fallback if fonts API not supported
+      fontsLoaded = true
+    }
     
     if (allImages.length === 0) {
-      // If there are no images to load, wait a minimum time for visual effect
-      setTimeout(() => setLoading(false), 2500)
+      checkAllLoaded()
       return
     }
     
@@ -25,18 +44,16 @@ export default function App() {
     allImages.forEach(img => {
       if (img.complete) {
         imagesLoaded++
+        checkAllLoaded()
       } else {
         img.addEventListener('load', () => {
           imagesLoaded++
-          if (imagesLoaded === allImages.length) {
-            // All images loaded - give minimum time for preloader visibility
-            setTimeout(() => setLoading(false), 1000)
-          }
+          checkAllLoaded()
         })
       }
     })
     
-    // Fallback if images don't load or are cached
+    // Fallback if assets don't load or are cached
     setTimeout(() => setLoading(false), 5000)
   }, [])
 
