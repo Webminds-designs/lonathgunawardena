@@ -24,15 +24,34 @@ export default function App() {
       }
     }
 
+    // Check specific fonts loading (add your preloader fonts here)
+    const preloaderFonts = [
+      'ReviewHeavy',
+      'ReviewRegular',
+      'ReviewCondensed',
+      'RapidResponse',
+      'Figtree'
+    ]
+
     // Check fonts loading
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        fontsLoaded = true
-        checkAllLoaded()
-      })
+      Promise.all(
+        preloaderFonts.map(font => 
+          document.fonts.load(`1em ${font}`).catch(err => {
+            console.warn(`Font loading failed for ${font}:`, err);
+            return null; // Continue even if one font fails
+          })
+        )
+      ).then(() => {
+        // Wait for document.fonts.ready as additional safety
+        document.fonts.ready.then(() => {
+          fontsLoaded = true;
+          checkAllLoaded();
+        });
+      });
     } else {
       // Fallback if fonts API not supported
-      fontsLoaded = true
+      fontsLoaded = true;
     }
     
     if (allImages.length === 0) {
