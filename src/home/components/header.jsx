@@ -1,97 +1,158 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const mainRef = useRef(null)
-    const pixelsRef = useRef(null)
-    const designsRef = useRef(null)
-    const footerRef = useRef(null)
-
+    const [elementsLoaded, setElementsLoaded] = useState(false);
+    
+    // Create refs
+    const mainRef = useRef(null);
+    const pixelsRef = useRef(null);
+    const designsRef = useRef(null);
+    const footerRef = useRef(null);
+    
+    // Find DOM elements and set up refs only after component has mounted
     useEffect(() => {
-        // get the App.jsx main div element
-        mainRef.current = document.getElementById('main')
-        // get the pixels div element
-        pixelsRef.current = document.getElementById('pixels')
-        // get the designs div element
-        designsRef.current = document.getElementById('designs')
-        // get the footer div element
-        footerRef.current = document.getElementById('footer')
-    }, [])
-
-    const { scrollYProgress } = useScroll({
-        target: mainRef,
-        offset: ["start start", "end start"]
-    })
-
-    // Track when pixels section intersects with header
-    const { scrollYProgress: pixelsScrollProgress } = useScroll({
-        target: pixelsRef,
-        offset: ["start end", "start start"] // From pixels entering viewport to reaching top
-    })
-
-    // Track when designs section intersects with header
-    const { scrollYProgress: designsScrollProgress } = useScroll({
-        target: designsRef,
-        offset: ["start end", "start start"] // From designs entering viewport to reaching top
-    })
-
-    // Track when footer section intersects with header
-    const { scrollYProgress: footerScrollProgress } = useScroll({
-        target: footerRef,
-        offset: ["start end", "start start"] // From footer entering viewport to reaching top
-    })
+        // Function to find and set all required elements
+        const findElements = () => {
+            const main = document.getElementById('main');
+            const pixels = document.getElementById('pixels');
+            const designs = document.getElementById('designs');
+            const footer = document.getElementById('footer');
+            
+            if (main && pixels && designs && footer) {
+                mainRef.current = main;
+                pixelsRef.current = pixels;
+                designsRef.current = designs;
+                footerRef.current = footer;
+                setElementsLoaded(true);
+                return true;
+            }
+            return false;
+        };
+        
+        // Try to find elements immediately
+        const found = findElements();
+        
+        // If elements weren't found, retry with increasing delays
+        if (!found) {
+            const retryDelays = [100, 300, 500, 1000];
+            let retryCount = 0;
+            
+            const attemptRetry = () => {
+                if (retryCount < retryDelays.length) {
+                    setTimeout(() => {
+                        if (!findElements()) {
+                            retryCount++;
+                            attemptRetry();
+                        }
+                    }, retryDelays[retryCount]);
+                }
+            };
+            
+            attemptRetry();
+        }
+        
+        return () => {
+            setElementsLoaded(false);
+        };
+    }, []);
+    
+    // Set up scroll tracking only after elements are loaded
+    const { scrollYProgress } = useScroll(
+        elementsLoaded ? {
+            target: mainRef,
+            offset: ["start start", "end start"],
+        } : { 
+            layoutEffect: false,
+            container: () => document.documentElement 
+        }
+    );
+    
+    // Track intersections only if elements are loaded
+    const { scrollYProgress: pixelsScrollProgress } = useScroll(
+        elementsLoaded ? {
+            target: pixelsRef,
+            offset: ["start end", "start start"]
+        } : { 
+            layoutEffect: false,
+            container: () => document.documentElement 
+        }
+    );
+    
+    const { scrollYProgress: designsScrollProgress } = useScroll(
+        elementsLoaded ? {
+            target: designsRef,
+            offset: ["start end", "start start"]
+        } : { 
+            layoutEffect: false,
+            container: () => document.documentElement 
+        }
+    );
+    
+    const { scrollYProgress: footerScrollProgress } = useScroll(
+        elementsLoaded ? {
+            target: footerRef,
+            offset: ["start end", "start start"]
+        } : { 
+            layoutEffect: false,
+            container: () => document.documentElement 
+        }
+    );
 
     // Transform background color when pixels section reaches the top
     const pixelsBackgroundColor = useTransform(
         pixelsScrollProgress,
-        [0.9, 1], // When pixels section is almost at the top
-        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"] // From stone-300 to black
-    )
+        [0.9, 1],
+        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"]
+    );
 
     // Transform background color when designs section reaches the top
     const designsBackgroundColor = useTransform(
         designsScrollProgress,
-        [0.9, 1], // When designs section is almost at the top
-        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From stone-300 to black
-    )
+        [0.9, 1],
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"]
+    );
 
     // Transform background color when footer section reaches the top
     const footerBackgroundColor = useTransform(
         footerScrollProgress,
-        [0.9, 1], // When footer section is almost at the top
-        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"] // From stone-300 to black
-    )
+        [0.9, 1],
+        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"]
+    );
 
     // Transform border color in the header when pixels section reaches the top
     const pixelsBorderColor = useTransform(
         pixelsScrollProgress,
         [0.9, 1],
-        ["rgb(163, 163, 163)", "rgb(64, 64, 64)"] // From stone-400 to neutral-700
-    )
+        ["rgb(163, 163, 163)", "rgb(64, 64, 64)"]
+    );
 
     // Transform border color in the header when designs section reaches the top
     const designsBorderColor = useTransform(
         designsScrollProgress,
         [0.9, 1],
-        ["rgb(64, 64, 64)", "rgb(163, 163, 163)"] // From neutral-700 to stone-400
-    )
+        ["rgb(64, 64, 64)", "rgb(163, 163, 163)"]
+    );
 
     // Transform border color in the header when footer section reaches the top
     const footerBorderColor = useTransform(
         footerScrollProgress,
         [0.9, 1],
-        ["rgb(163, 163, 163)", "rgb(64, 64, 64)"] // From stone-400 to neutral-700
-    )
+        ["rgb(163, 163, 163)", "rgb(64, 64, 64)"]
+    );
 
-    // Combine all background colors
+    // Combine all background colors with a safety check
     const combinedBackgroundColor = useTransform(
         [pixelsScrollProgress, designsScrollProgress, footerScrollProgress],
         ([pixelsProgress, designsProgress, footerProgress]) => {
+            // If elements aren't loaded yet, return the default color
+            if (!elementsLoaded) return "rgb(214, 211, 209)";
+            
             if (footerProgress >= 0.9) return footerBackgroundColor.get();
             if (designsProgress >= 0.9) return designsBackgroundColor.get();
             if (pixelsProgress >= 0.9) return pixelsBackgroundColor.get();
-            return "rgb(214, 211, 209)"; // Default color
+            return "rgb(214, 211, 209)";
         }
     );
 
@@ -102,7 +163,7 @@ export default function Header() {
             if (footerProgress >= 0.9) return footerBorderColor.get();
             if (designsProgress >= 0.9) return designsBorderColor.get();
             if (pixelsProgress >= 0.9) return pixelsBorderColor.get();
-            return "rgb(163, 163, 163)"; // Default color
+            return "rgb(163, 163, 163)";
         }
     );
 
@@ -110,23 +171,23 @@ export default function Header() {
     // Transform title text color when pixels section reaches the top
     const pixelsTitleColor = useTransform(
         pixelsScrollProgress,
-        [0.9, 1], // When pixels section is almost at the top
-        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From black to stone-300
-    )
+        [0.9, 1],
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"]
+    );
 
     // Transform title text color when designs section reaches the top
     const designsTitleColor = useTransform(
         designsScrollProgress,
-        [0.9, 1], // When designs section is almost at the top
-        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"] // From stone-300 to black
-    )
+        [0.9, 1],
+        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"]
+    );
 
     // Transform title text color when footer section reaches the top
     const footerTitleColor = useTransform(
         footerScrollProgress,
-        [0.9, 1], // When footer section is almost at the top
-        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From black to stone-300
-    )
+        [0.9, 1],
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"]
+    );
 
     // Combine all text colors for the title
     const combinedTitleColor = useTransform(
@@ -135,7 +196,7 @@ export default function Header() {
             if (footerProgress >= 0.9) return footerTitleColor.get();
             if (designsProgress >= 0.9) return designsTitleColor.get();
             if (pixelsProgress >= 0.9) return pixelsTitleColor.get();
-            return "rgb(0, 0, 0)"; // Default text color is black
+            return "rgb(0, 0, 0)";
         }
     );
 

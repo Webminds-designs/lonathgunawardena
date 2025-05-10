@@ -58,83 +58,123 @@ function useResponsiveTransform(scrollProgress, breakpoints) {
 
 export default function Hero() {
     const containerRef = useRef(null)
-    const selfieRef = useRef(null)  // Add a new ref for the selfie section
+    const selfieRef = useRef(null)
     const pixelsRef = useRef(null)
     const designsRef = useRef(null)
     const footerRef = useRef(null)
+    const [elementsLoaded, setElementsLoaded] = useState(false)
 
     useEffect(() => {
-        // get the pixels div element
-        pixelsRef.current = document.getElementById('pixels')
-        // get the designs div element
-        designsRef.current = document.getElementById('designs')
-        // get the footer div element
-        footerRef.current = document.getElementById('footer')
+        const findElements = () => {
+            const pixels = document.getElementById('pixels');
+            const designs = document.getElementById('designs');
+            const footer = document.getElementById('footer');
+            
+            if (pixels && designs && footer) {
+                pixelsRef.current = pixels;
+                designsRef.current = designs;
+                footerRef.current = footer;
+                setElementsLoaded(true);
+                return true;
+            }
+            return false;
+        };
+        
+        const found = findElements();
+        
+        if (!found) {
+            const retryDelays = [100, 300, 500, 1000, 2000];
+            let retryCount = 0;
+            
+            const attemptRetry = () => {
+                if (retryCount < retryDelays.length) {
+                    setTimeout(() => {
+                        if (!findElements()) {
+                            retryCount++;
+                            attemptRetry();
+                        }
+                    }, retryDelays[retryCount]);
+                }
+            };
+            
+            attemptRetry();
+        }
+        
+        return () => {
+            setElementsLoaded(false);
+        };
     }, []);
 
-    // Track when pixels section intersects with header
-    const { scrollYProgress: pixelsScrollProgress } = useScroll({
-        target: pixelsRef,
-        offset: ["start end", "start start"] // From pixels entering viewport to reaching top
-    })
-
-    // Track when designs section intersects with header
-    const { scrollYProgress: designsScrollProgress } = useScroll({
-        target: designsRef,
-        offset: ["start end", "start start"] // From designs entering viewport to reaching top
-    })
-
-    // Track when footer section intersects with header
-    const { scrollYProgress: footerScrollProgress } = useScroll({
-        target: footerRef,
-        offset: ["start end", "start start"] // From footer entering viewport to reaching top
-    })
-
-    // Transform title text color when pixels section reaches the top
-    const pixelsTitleColor = useTransform(
-        pixelsScrollProgress,
-        [0.9, 1], // When pixels section is almost at the top
-        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From black to stone-300
-    )
-
-    // Transform title text color when designs section reaches the top
-    const designsTitleColor = useTransform(
-        designsScrollProgress,
-        [0.9, 1], // When designs section is almost at the top
-        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"] // From stone-300 to black
-    )
-
-    // Transform title text color when footer section reaches the top
-    const footerTitleColor = useTransform(
-        footerScrollProgress,
-        [0.9, 1], // When footer section is almost at the top
-        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"] // From black to stone-300
-    )
-
-    // Combine all text colors for the title
-    const combinedTitleColor = useTransform(
-        [pixelsScrollProgress, designsScrollProgress, footerScrollProgress],
-        ([pixelsProgress, designsProgress, footerProgress]) => {
-            if (footerProgress >= 0.9) return footerTitleColor.get();
-            if (designsProgress >= 0.9) return designsTitleColor.get();
-            if (pixelsProgress >= 0.9) return pixelsTitleColor.get();
-            return "rgb(0, 0, 0)"; // Default text color is black
+    const { scrollYProgress: pixelsScrollProgress } = useScroll(
+        elementsLoaded && pixelsRef.current ? {
+            target: pixelsRef,
+            offset: ["start end", "start start"]
+        } : { 
+            layoutEffect: false, 
+            container: () => document.documentElement 
         }
     );
 
-    // For a sticky effect where the title stays in place until subtitle reaches top
+    const { scrollYProgress: designsScrollProgress } = useScroll(
+        elementsLoaded && designsRef.current ? {
+            target: designsRef,
+            offset: ["start end", "start start"]
+        } : { 
+            layoutEffect: false, 
+            container: () => document.documentElement 
+        }
+    );
+
+    const { scrollYProgress: footerScrollProgress } = useScroll(
+        elementsLoaded && footerRef.current ? {
+            target: footerRef,
+            offset: ["start end", "start start"]
+        } : { 
+            layoutEffect: false, 
+            container: () => document.documentElement 
+        }
+    );
+
+    const pixelsTitleColor = useTransform(
+        pixelsScrollProgress,
+        [0.9, 1],
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"]
+    );
+    
+    const designsTitleColor = useTransform(
+        designsScrollProgress,
+        [0.9, 1],
+        ["rgb(214, 211, 209)", "rgb(0, 0, 0)"]
+    );
+    
+    const footerTitleColor = useTransform(
+        footerScrollProgress,
+        [0.9, 1],
+        ["rgb(0, 0, 0)", "rgb(214, 211, 209)"]
+    );
+
+    const combinedTitleColor = useTransform(
+        [pixelsScrollProgress, designsScrollProgress, footerScrollProgress],
+        ([pixelsProgress, designsProgress, footerProgress]) => {
+            if (!elementsLoaded) return "rgb(0, 0, 0)";
+            
+            if (footerProgress >= 0.9) return footerTitleColor.get();
+            if (designsProgress >= 0.9) return designsTitleColor.get();
+            if (pixelsProgress >= 0.9) return pixelsTitleColor.get();
+            return "rgb(0, 0, 0)";
+        }
+    );
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
     })
 
-    // Add scroll tracking for the selfie section
     const { scrollYProgress: selfieScrollProgress } = useScroll({
         target: selfieRef,
         offset: ["start end", "end start"]
     })
 
-    // Create a scale transform for the selfie that changes between 0.9 and 1.1 based on scroll position
     const selfieScale = useTransform(
         selfieScrollProgress,
         [0, 0.7, 1],
@@ -143,14 +183,13 @@ export default function Hero() {
 
     const isMobile = window.innerWidth < 768;
     const animationProgress = isMobile
-        ? [0, 0.15, 0.3, 1] // Slower animation on mobile
-        : [0, 0.1, 0.2, 1];  // Standard animation on desktop
+        ? [0, 0.15, 0.3, 1]
+        : [0, 0.1, 0.2, 1];
 
     const { scaleTransform, yTransform } = useResponsiveTransform(scrollYProgress, animationProgress);
 
     return (
         <div ref={containerRef} className='flex flex-col space-y-5 px-12 w-full max-w-[1920px] mx-auto pb-10 md:pb-14 lg:pb-20 xl:pb-24 2xl:pb-32'>
-            {/* title - using position sticky for a more reliable fixed effect */}
             <motion.div
                 style={{
                     color: combinedTitleColor,
@@ -169,7 +208,6 @@ export default function Hero() {
                 <div className='text-[30px] md:text-[70px] lg:text-[90px] xl:text-[133px] 2xl:text-[147px] -mt-3 md:-mt-8 lg:-mt-12 xl:-mt-16 2xl:-mt-20'>GUNAWARDENA</div>
             </motion.div>
 
-            {/* sub title */}
             <div className='flex justify-between items-center mt-30 md:mt-60 lg:mt-72 xl:mt-96 2xl:mt-[30em] text-black'>
                 <div className='h-7 w-2 lg:h-14 lg:w-4 xl:h-16 xl:w-5 2xl:h-20 2xl:w-6 bg-black'></div>
                 <p className='flex flex-col text-center font-reviewcondensed font-bold text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl'>
@@ -179,7 +217,6 @@ export default function Hero() {
                 <div className='h-7 w-2 lg:h-14 lg:w-4 xl:h-16 xl:w-5 2xl:h-20 2xl:w-6 bg-black'></div>
             </div>
 
-            {/* human centric design */}
             <div className='relative flex flex-col lg:flex-row justify-between w-full gap-8 mt-5 xl:mt-10 2xl:mt-16 text-black'>
                 <div className='flex flex-col items-center lg:items-start max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto lg:mx-0'>
                     <p className='flex flex-col font-reviewheavy text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl items-center lg:items-start text-center lg:text-left mb-3 xl:mb-5 2xl:mb-8'>
@@ -206,8 +243,8 @@ export default function Hero() {
                             position: 'absolute',
                             top: '0',
                             left: '20%',
-                            borderRadius: '1rem',   // Rounded corners (adjust as needed)
-                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Shadow effect
+                            borderRadius: '1rem',
+                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
                         }}
                     />
 
@@ -222,8 +259,8 @@ export default function Hero() {
                             position: 'absolute',
                             top: '10%',
                             left: '10%',
-                            borderRadius: '1rem',   // Rounded corners (adjust as needed)
-                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Shadow effect
+                            borderRadius: '1rem',
+                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
                         }}
                     />
 
@@ -238,17 +275,15 @@ export default function Hero() {
                             width: '100%',
                             position: 'absolute',
                             top: '20%',
-                            borderRadius: '1rem',   // Rounded corners (adjust as needed)
-                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Shadow effect
+                            borderRadius: '1rem',
+                            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
                         }}
                     />
                 </div>
 
-                {/* divider */}
                 <div className="absolute bottom-12 xl:bottom-16 2xl:bottom-24 w-full h-px bg-stone-400"></div>
             </div>
 
-            {/* selfie */}
             <motion.div
                 ref={selfieRef}
                 style={{
